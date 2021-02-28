@@ -1,0 +1,229 @@
+ISA - Síťové aplikace a správa sítí
+	
+19. listopadu 2017 00:26:56
+Studijní materiály: » Web stránky   » Soubory k předmětu
+Typ: povinný Kredity: 5 Ukončení: ZáZk (písemná) Fakulta: FIT
+Zápočet: ne, 2017-12-15
+Hodnocení: 4F (11 bodů), 0 zkoušek
+Programování síťové služby » zpět na seznam variant
+	Zpět na termíny
+Varianta termínu - Analyzátor paketů (Jan Wrona) - přihlášen
+Termín č.:	2
+Zahájení:	2017-09-25  	Ukončení:	2017-11-20
+Přihlašování od:	2017-09-25 20:01:00  	Přihlašování do:	2017-10-06 00:00:00
+Přihlášeno:	66 	Kapacita:	66
+Max. bodů:	20
+Získáno bodů:	0
+
+» Odevzdané soubory
+
+Společná část popisu:
+Vytvořte komunikující aplikaci podle konkrétní vybrané specifikace pomocí síťové knihovny BSD sockets (pokud není ve variantě zadání uvedeno jinak). Projekt bude vypracován v jazyce C/C++. Pokud individuální zadání nespecifikuje vlastní referenční systém, musí být projekt přeložitelný a spustitelný na serveru merlin.fit.vutbr.cz.
+
+Vypracovaný projekt uložený v archívu .tar a se jménem xlogin00.tar odevzdejte elektronicky přes IS. Soubor nekomprimujte.
+
+    Termín odevzdání je 20.11.2017 (hard deadline). Odevzdání emailem po uplynutí termínu není možné.
+    Odevzdaný projekt musí obsahovat:
+        soubor se zdrojovým kódem (dodržujte jména souborů uvedená v konkrétním zadání),
+        funkční Makefile pro překlad zdrojového souboru,
+        dokumentaci (soubor manual.pdf), která bude obsahovat uvedení do problematiky, návrhu aplikace, popis implementace, základní informace o programu, návod na použití. V dokumentaci se očekává následující: titulní strana, obsah, logické strukturování textu, přehled nastudovaných informací z literatury, popis zajímavějších pasáží implementace, použití vytvořených programů a literatura.
+        soubor README obsahující krátký textový popis programu s případnými rozšířeními/omezeními, příklad spuštění a seznam odevzdaných souborů,
+        další požadované soubory podle konkrétního typu zadání. 
+    Pokud v projektu nestihnete implementovat všechny požadované vlastnosti, je nutné veškerá omezení jasně uvést v dokumentaci a v souboru README.
+    Co není v zadání jednoznačně uvedeno, můžete implementovat podle svého vlastního výběru. Zvolené řešení popište v dokumentaci.
+    Při řešení projektu respektujte zvyklosti zavedené v OS unixového typu (jako je například formát textového souboru).
+    Vytvořené programy by měly být použitelné a smysluplné, řádně komentované a formátované a členěné do funkcí a modulů. Program by měl obsahovat nápovědu informující uživatele o činnosti programu a jeho parametrech. Případné chyby budou intuitivně popisovány uživateli.
+    Aplikace nesmí v žádném případě skončit s chybou SEGMENTATION FAULT ani jiným násilným systémovým ukončením (např. dělení nulou).
+    Pokud přejímáte velmi krátké pasáže zdrojových kódů z různých tutoriálů či příkladů z Internetu (ne mezi sebou), tak je nutné vyznačit tyto sekce a jejich autory dle licenčních podmínek, kterými se distribuce daných zdrojových kódů řídí. V případě nedodržení bude na projekt nahlíženo jako na plagiát.
+    Konzultace k projektu podává vyučující, který zadání vypsal.
+    Před odevzdáním zkontrolujte, zda jste dodrželi všechna jména souborů požadovaná ve společné části zadání i v zadání pro konkrétní projekt. Zkontrolujte, zda je projekt přeložitelný.
+
+Hodnocení projektu:
+
+    Maximální počet bodů za projekt je 20 bodů.
+    Příklad kriterií pro hodnocení projektů:
+        nepřehledný, nekomentovaný zdrojový text: až -7 bodů
+        nefunkční či chybějící Makefile: až -4 body
+        nekvalitní či chybějící dokumentace: až -8 bodů
+        nedodržení formátu vstupu/výstupu či konfigurace: -10 body
+        odevzdaný soubor nelze přeložit, spustit a odzkoušet: 0 bodů
+        odevzdáno po termínu: 0 bodů
+        nedodržení zadání: 0 bodů
+        nefunkční kód: 0 bodů
+        opsáno: 0 bodů (pro všechny, kdo mají stejný kód)
+
+
+Popis varianty:
+Zadání:
+Vytvořte jednoduchou konzolovou aplikaci pro offline analýzu síťového provozu obsahující vybrané protokoly z rodiny TCP/IP.
+
+Vašim úkolem bude nastudovat vybrané protokoly, formát a obsah hlaviček jejich datagramů. Na základě těchto znalostí vytvoříte program, který bude číst data paketů ze souboru, rozumět struktuře a zapouzdření různých síťových protokolů, bude schopen interpretovat, zobrazovat a dále zpracovávat data z hlaviček.
+
+Výchozí výstup programu bude textový řetězec ukončený znakem konce řádku vytištěný na standardní výstup pro každý paket vstupního souboru. Řetězec bude obsahovat jaké protokoly se na jednotlivých vrstvách nacházejí a jaké mají hodnoty určitých polí z jejich hlavičky.
+
+Program bude umožňovat agregaci informací, kde agregační klíč může být zdrojová/cílová MAC adresa/IP adresa/číslo portu. Ke každému agregovanému záznamu se bude počítat suma paketů a přenesených bajtů. Dle těchto dvou položek bude také možné výpis řadit.
+
+
+Podporované protokoly:
+Vrstva síťového rozhraní:
+
+    Ethernet
+    IEEE 802.1Q včetně IEEE 802.1ad
+
+Síťová vrstva:
+
+    IPv4 (pozor na fragmentaci)
+    IPv6 (pozor na rozšiřující hlavičky, fragmentaci řešit nemusíte)
+    ICMPv4
+    ICMPv6
+
+Transportní vrstva:
+
+    TCP
+    UDP
+
+Aplikační vrstva: nepodporována
+
+
+Usage:
+isashark [-h] [-a aggr-key] [-s sort-key] [-l limit] [-f filter-expression] file ...
+  -h  Vypíše nápovědu a ukončí program.
+  -a aggr-key  Zapnutí agregace podle klíče aggr-key, což může být srcmac značící zdrojovou MAC adresu, dstmac značící cílovou MAC adresu, srcip značící zdrojovou IP adresu, dstip značící cílovou IP adresu, srcport značící číslo zdrojového transportního portu nebo dstport značící číslo cílového transportního portu.
+  -s sort-key  Zapnutí řazení podle klíče sort-key, což může být packets (počet paketů) nebo bytes (počet bajtů). Řadit lze jak agregované tak i neagregované položky. Ve druhém případě je klíč packets bez efektu, protože všechny položky obsahují pouze jeden paket. Řadí se vždy sestupně.
+  -l limit  Nezáporné celé číslo v desítkové soustavě udávající limit počtu vypsaných položek.
+  -f filter-expression  Program zpracuje pouze pakety, které vyhovují filtru danému řetězcem filter-expression. Více informací hledejte v manuálové stránce pcap-filter(7).
+  file  Cesta k souboru ve formátu pcap (čitelný knihovnou libpcap). Možné je zadat jeden a více souborů.
+
+
+Formát výstupu bez agregace:
+pro každý paket se na stdout vypíše následující řádek:
+Číslo paketu: TS LEN | Název L2 protokolu: položky protokolu | Název L3 protokolu: položky protokolu | Název L4 protokolu: položky protokolu
+Číslo paketu je unikátní v rámci všech vstupních souborů, začíná se počítat od jedničky (první paket v prvním souboru), pakety nevyhovující filtru se nezapočítávají. TS je časová značka v mikrosekundách. LEN je délka paketu v bajtech. Názvy a položky protokolů jsou následující (položky jsou odděleny mezerou):
+
+Ethernet: zdrojová-MAC-adresa cílová-MAC-adresa [802.1Q-VID1 802.1Q-VID2 ...]
+Reprezentace MAC adres je šest dvojic hexadecimálních čísel oddělených dvojtečkou (např. 01:23:45:67:89:ab). Reprezentace 802.1Q VLAN identifikátoru je nezáporné celé číslo v desítkové soustavě.
+
+IPv4: zdrojová-IPv4-adresa cílová-IPv4-adresa TTL
+Reprezentace IPv4 adres je tzv. dot-decimal notace (např. 147.229.12.178). Reprezentace TTL je nezáporné celé číslo v desítkové soustavě.
+
+IPv6: zdrojová-IPv6-adresa cílová-IPv6-adresa Hop-Limit
+Reprezentace IPv6 adres je dle RFC 5952 (např. 2001:db8::1). Reprezentace hop limitu je nezáporné celé číslo v desítkové soustavě.
+
+ICMPv4: Type Code Type-popis Code-popis
+Type a Code jsou nezáporná celá čísla v desítkové soustavě, Type-popis a Code-popis jsou textové řetězce vysvětlující typ a kód dle RFC 792. Pokud v RFC není popis definován, nevypisuje se.
+
+ICMPv6: Type Code Type-popis Code-popis
+Type a Code jsou nezáporná celá čísla v desítkové soustavě, Type-popis a Code-popis jsou textové řetězce vysvětlující typ a kód dle RFC 4443. Pokud v RFC není popis definován, nevypisuje se.
+
+TCP: zdrojový-port cílový-port číslo-sekvence potvrzený-bajt příznaky
+Zdrojový/cílový port, číslo sekvence (sequence number) a potvrzený bajt (acknowledgment number) jsou reprezentovány pomocí nezáporného celého čísla v desítkové soustavě. Nastavené příznaky (CWR, ECE, URG, ACK, PSH, RST, SYN, FIN) jsou reprezentovány prvním znakem svého názvu, nulové znakem tečky. Pořadí musí zůstat zachované. Např. C.UA..SF znamená že příznaky CWR, URG, ACK, SYN a FIN byly nastavené, ostatní byly nulové.
+
+UDP: zdrojový-port cílový-port
+Viz TCP.
+
+
+Formát výstupu s agregací:
+pro každý záznam se na stdout vypíše následující řádek:
+hodnota-agregačního-klíče: suma-paketů suma-bajtů
+Hodnota agregačního klíče může být zdrojová/cílová MAC adresa/IP adresa/číslo portu, její reprezentace je stejná jako u odpovídající položky výstupu bez agregace. Sumy jsou nezáporná celá čísla v desítkové soustavě.
+
+
+Upřesnění chování:
+Program čte a zpracovává vstupní soubory v pořadí, v jakém byly zadány.
+Program čte a zpracovává pakety v pořadí, v jakém jsou uloženy (pouze agregace bez řazení má pořadí výstupu závislé na implementaci).
+Pokud je paket fragmentován, zpracovává a vypisuje se až když je kompletní.
+Pokud vstupní soubory neobsahují všechny fragmenty paketu, paket se nevypisuje ani nezpracovává.
+Pokud je zadán agregační klíč který se v paketu nevyskytuje (např. srcport u ICMP paketu), paket se přeskočí.
+Pokud program narazí na neznámý protokol, vypíše upozornění na stderr a paket přeskočí.
+
+
+Pokyny k implementaci:
+Implementační jazyk: C/C++
+Povolené knihovny: libc včetně GNU a POSIX rozšíření (např. unistd.h), libpcap, STL, deklarace z net/*, netinet/*, arpa/*, hašovací funkce dle libosti
+Referenční systém: merlin.fit.vutbr.cz
+Inspirace: Wireshark, tcpdump
+
+
+Příklady použítí:
+Použité pcapy jsou na http://www.fit.vutbr.cz/~iwrona/courses/2017/isa/, další si můžete vytvořit např. pomocí scapy. WIS špatně zalamuje řádky, ve skutečnosti je výpis jednoho paketu na jednom řádku.
+
+Obyčejný výpis:
+$ ./isashark eth_ipv4_tcp.pcap
+1: 1507020707944702 54 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | TCP: 54321 80 0 0 ......S.
+
+$ ./isashark eth_dot1q_ipv6_udp.pcap
+1: 1507020992331332 66 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac 15 | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 80
+
+$ ./isashark eth_dot1ad_ipv4_icmpv4.pcap
+1: 1507023901386641 50 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac 15 30 | IPv4: 192.168.1.1 192.168.1.2 64 | ICMPv4: 11 0 time exceeded time to live exceeded in transit
+
+$ ./isashark eth_ipv6_icmpv6.pcap
+1: 1507024246062904 62 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv6: 2001:db8::1 2001:db8::2 64 | ICMPv6: 1 1 destination unreachable communication with destination administratively prohibited
+
+$ ./isashark mix.pcap
+1: 1507025933348357 90 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | TCP: 54321 666 0 0 ......S.
+2: 1507025949455164 76 | Ethernet: 01:23:45:67:89:ac 01:23:45:67:89:ab | IPv4: 192.168.1.2 192.168.1.1 64 | TCP: 666 54321 0 0 ......S.
+3: 1507025950670040 85 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | TCP: 54321 666 0 0 ......S.
+4: 1507025951564182 85 | Ethernet: 01:23:45:67:89:ac 01:23:45:67:89:ab | IPv4: 192.168.1.2 192.168.1.1 64 | TCP: 666 54321 0 0 ......S.
+5: 1507025952857185 94 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | TCP: 54321 666 0 0 ......S.
+6: 1507025968692963 100 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 666
+7: 1507025988052635 67 | Ethernet: 01:23:45:67:89:ae 01:23:45:67:89:ad | IPv6: 2001:db8::2 2001:db8::1 64 | UDP: 666 54321
+8: 1507025990199610 111 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 666
+9: 1507025991143626 76 | Ethernet: 01:23:45:67:89:ae 01:23:45:67:89:ad | IPv6: 2001:db8::2 2001:db8::1 64 | UDP: 666 54321
+10: 1507025992127657 104 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 666
+
+Filtr:
+$ ./isashark -f "src host 2001:db8::1" mix.pcap
+1: 1507025968692963 100 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 666
+2: 1507025990199610 111 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 666
+3: 1507025992127657 104 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 666
+
+Limit:
+$ ./isashark -l 3 mix.pcap
+1: 1507025933348357 90 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | TCP: 54321 666 0 0 ......S.
+2: 1507025949455164 76 | Ethernet: 01:23:45:67:89:ac 01:23:45:67:89:ab | IPv4: 192.168.1.2 192.168.1.1 64 | TCP: 666 54321 0 0 ......S.
+3: 1507025950670040 85 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | TCP: 54321 666 0 0 ......S.
+
+Agregace:
+$ ./isashark -a srcip mix.pcap
+2001:db8::2: 2 143
+2001:db8::1: 3 315
+192.168.1.1: 3 269
+192.168.1.2: 2 161
+
+Agregace a řazení:
+$ ./isashark -a srcip -s bytes mix.pcap
+2001:db8::1: 3 315
+192.168.1.1: 3 269
+192.168.1.2: 2 161
+2001:db8::2: 2 143
+
+Řazení:
+$ ./isashark -s bytes mix.pcap
+8: 1507025990199610 111 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 666
+10: 1507025992127657 104 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 666
+6: 1507025968692963 100 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv6: 2001:db8::1 2001:db8::2 64 | UDP: 54321 666
+5: 1507025952857185 94 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | TCP: 54321 666 0 0 ......S.
+1: 1507025933348357 90 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | TCP: 54321 666 0 0 ......S.
+4: 1507025951564182 85 | Ethernet: 01:23:45:67:89:ac 01:23:45:67:89:ab | IPv4: 192.168.1.2 192.168.1.1 64 | TCP: 666 54321 0 0 ......S.
+3: 1507025950670040 85 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | TCP: 54321 666 0 0 ......S.
+2: 1507025949455164 76 | Ethernet: 01:23:45:67:89:ac 01:23:45:67:89:ab | IPv4: 192.168.1.2 192.168.1.1 64 | TCP: 666 54321 0 0 ......S.
+9: 1507025991143626 76 | Ethernet: 01:23:45:67:89:ae 01:23:45:67:89:ad | IPv6: 2001:db8::2 2001:db8::1 64 | UDP: 666 54321
+7: 1507025988052635 67 | Ethernet: 01:23:45:67:89:ae 01:23:45:67:89:ad | IPv6: 2001:db8::2 2001:db8::1 64 | UDP: 666 54321
+
+Fragmentace:
+$ ./isashark fragmentation.pcap
+1: 1507027422288273 42 | Ethernet: 01:23:45:67:89:af 01:23:45:67:89:a0 | IPv4: 192.168.1.5 192.168.1.6 64 | TCP: 54323 888 0 0 ......S.
+2: 1507027398050420 42 | Ethernet: 01:23:45:67:89:ad 01:23:45:67:89:ae | IPv4: 192.168.1.3 192.168.1.4 64 | TCP: 54322 777 0 0 ......S.
+3: 1507027388610388 42 | Ethernet: 01:23:45:67:89:ab 01:23:45:67:89:ac | IPv4: 192.168.1.1 192.168.1.2 64 | UDP: 54321 666
+
+
+Changelog:
+27. 9. - doplňeno GNU a POSIX libc rozšíření do povolených knihoven
+3. 10 - doplněny příklady použití a ukázkové pcapy
+3. 10 - upřesněn formát výstupu pro ICMPv4 a ICMPv6
+4. 10 - opraveny chyby v příkladech (chybějící dvojtečka za číslem paketu, chybějící TTL/Hop-Limit)
+
+©Fakulta informačních technologií VUT v Brně, Božetěchova 2, 612 66 Brno
+
+
