@@ -1,27 +1,24 @@
 # Isashark
 Czech version [here](README_CZ.md).
 
-## Description:
+## Description
     Isashark is offline packet analyzer, which is able to parse headers data of supported protocols and print them or use them to further processing. Further processing depends on selected program options and arguments.
-
     Program expects .pcap files with saved traffic.
-
     Output format depends on given options, see Usage for more information.
 
-### Extensions and known issues:
+### Extensions and known issues
     Defragmentation of ipv4 - I've chosen to implement fragmentation handling by myself, but this results in wrong results in case of overlapping fragments and two last values in TCP header. UDP works fine.
-    
     No other issues were found.
 
-## Build:
+## Build
     Program is build by running the command "make".
 
-## Usage:
+## Usage
 ```
     isashark [-h] [-a aggr-key] [-s sort-key] [-l limit] [-f filter-expression] file ...
 ```
 
-## Examples:
+## Examples
 ```
     ./isashark -h
         Prints help and exits with success.
@@ -36,7 +33,7 @@ Czech version [here](README_CZ.md).
         Process only packets that match the filter.
 ```
 
-## Submitted files:
+## Submitted files
 - isashark.cpp
 - isashark.h
 - Makefile
