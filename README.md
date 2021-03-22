@@ -1,39 +1,44 @@
 # Isashark
+Czech version [here](README_CZ.md).
 
-## Popis:
-    Isashark je off-line analyzátor paket¿, který doká¿e vuy¿ít data z hlavi¿ek podporovaných protokol¿ a následn¿ je vypsat nebo je dále zpracovat podle argument¿ programu.
-    Na vstupu o¿ekává soubory .pcap obsahující pakety ur¿ené k rozboru.
-    Formát výstupu závisí na vstupních argumentech. Viz usage.
+## Description:
+    Isashark is offline packet analyzer, which is able to parse headers data of supported protocols and print them or use them to further processing. Further processing depends on selected program options and arguments.
 
-### Omezení a roz¿í¿ení:
-    Defragmentace ipv4 - zvolil jsem vlastní implementaci zpracování fragmentace, která se ukázala jako nevyhovující v p¿ípad¿ p¿ekrývání fragment¿ a u dvou posledních hodnot u TCP. Hlavi¿ka UDP je v po¿ádku.
-    ¿ádná dal¿í omezení nejsou a v¿e ostatní by m¿lo fungovat korektn¿.
+    Program expects .pcap files with saved traffic.
 
-### P¿eklad:
-    P¿eklad se spustí pomocí p¿íkazu "make".
+    Output format depends on given options, see Usage for more information.
 
-### Usage:
+### Extensions and known issues:
+    Defragmentation of ipv4 - I've chosen to implement fragmentation handling by myself, but this results in wrong results in case of overlapping fragments and two last values in TCP header. UDP works fine.
+    
+    No other issues were found.
+
+## Build:
+    Program is build by running the command "make".
+
+## Usage:
 ```
     isashark [-h] [-a aggr-key] [-s sort-key] [-l limit] [-f filter-expression] file ...
 ```
-### P¿íklady pou¿ití:
+
+## Examples:
 ```
     ./isashark -h
-        Vypí¿e nápov¿du a ukon¿í program.
+        Prints help and exits with success.
 
     ./isashark -a dstip inputfile.pcap
-        Agregace paket¿ podle zadaného klí¿e - v tomto p¿ípad¿ 'dstip'.
+        Agregates packets by given key - in this case: "dstip".
 
     ./isashark -l 20 inputfile.pcap
-        Vypí¿e maximáln¿ 20 paket¿.
+        Prints 20 packets at max.
 
     ./isashark -f "src host 2001:db8::1" inputfile.pcap
-        Zpracovává pouze pakety, které vyhovují filtru.
+        Process only packets that match the filter.
 ```
 
-### Odevzdané soubory:
+## Submitted files:
 - isashark.cpp
 - isashark.h
 - Makefile
-- README
+- README.md
 - manual.pdf
