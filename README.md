@@ -1,5 +1,6 @@
 # Isashark
 Czech version [here](README_CZ.md).
+Assignment (zadani) in CZ [here](Zadani.txt).
 
 ## Description
     Isashark is offline packet analyzer, which is able to parse headers data of supported protocols and print them or use them to further processing. Further processing depends on selected program options and arguments.
@@ -39,3 +40,9 @@ Czech version [here](README_CZ.md).
 - Makefile
 - README.md
 - manual.pdf
+
+## Useful Resources
+- [DNS primer, headers](https://www2.cs.duke.edu/courses/fall16/compsci356/DNS/DNS-primer.pdf)
+- [Sample traffic in pcap](https://wiki.wireshark.org/SampleCaptures)
+- [Retriving the data from UDP packet](https://www.winpcap.org/pipermail/winpcap-users/2007-September/002104.html)
+- [Dealing with pcup.h library](https://www.tcpdump.org/pcap.html)
