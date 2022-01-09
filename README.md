@@ -42,6 +42,10 @@ Assignment (zadani) in CZ [here](Zadani.txt).
 - README.md
 - manual.pdf
 
+## Dependencies
+- libpcap
+- libpcap-devel
+
 ## Useful Resources
 - [DNS primer, headers](https://www2.cs.duke.edu/courses/fall16/compsci356/DNS/DNS-primer.pdf)
 - [Sample traffic in pcap](https://wiki.wireshark.org/SampleCaptures)
